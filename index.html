@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynith Sports</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-mode">
+    <nav class="navbar">
+        <h1>Zynith</h1>
+        <div>
+            <button onclick="showSection('home')">Home</button>
+            <button onclick="showSection('products')">Products</button>
+            <button onclick="showSection('cart')" id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+            <button onclick="showSection('contact')">Contact Us</button>
+            <button onclick="showSection('auth')" id="login-btn">Login</button>
+            <button onclick="showSection('auth')" id="signup-btn">Sign Up</button>
+            <button onclick="logout()" id="logout-btn" style="display: none;">Logout</button>
+            <button onclick="showSection('admin')" id="admin-btn" style="display: none;">Admin Panel</button>
+            <button onclick="toggleTheme()" id="theme-toggle">Light Mode</button>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <div id="home" class="section">
+            <div class="hero">
+                <div>
+                    <h2>Welcome to Zynith </h2>
+                    <p>Unleash Your Potential with Premium Gear</p>
+                    <button onclick="showSection('products')" class="btn-primary">Shop Now</button>
+                </div>
+            </div>
+            <div class="container">
+                <h3 class="section-title">Shop Now!</h3>
+                <div id="category-sections"></div>
+            </div>
+        </div>
+        <div id="products" class="section">
+            <div class="container">
+                <h3 class="section-title">Our Products</h3>
+                <div class="filters">
+                    <select id="category-filter" onchange="filterProducts()">
+                        <option value="All">All Categories</option>
+                        <option value="Trekking">Trekking</option>
+                        <option value="Running">Running</option>
+                        <option value="Gym">Gym</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Cycling">Cycling</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                    <input type="text" id="search-input" placeholder="Search products..." oninput="filterProducts()">
+                </div>
+                <div id="product-grid" class="product-grid"></div>
+            </div>
+        </div>
+        <div id="subcategories" class="section">
+            <div class="container">
+                <h3 class="section-title" id="subcategory-title">Product Options</h3>
+                <div id="subcategory-grid" class="product-grid"></div>
+            </div>
+        </div>
+        <div id="cart" class="section">
+            <div class="container">
+                <h3 class="section-title">Your Cart</h3>
+                <div id="cart-items"></div>
+                <h4>Total: ₹<span id="total-amount">0.00</span></h4>
+                <button onclick="checkout()" class="btn-primary">Checkout</button>
+            </div>
+        </div>
+        <div id="admin" class="section">
+            <div class="container">
+                <h3 class="section-title">Admin Panel - Product Listings</h3>
+                <div id="admin-products" class="product-grid"></div>
+            </div>
+        </div>
+        <div id="auth" class="section">
+            <div class="auth-hero">
+                <div class="main-box">
+                    <span class="sp sp-t"></span>
+                    <span class="sp sp-r"></span>
+                    <span class="sp sp-b"></span>
+                    <span class="sp sp-l"></span>
+                    <div class="form-box">
+                        <div id="after"></div>
+                        <div class="button-box">
+                            <div id="btn"></div>
+                            <button type="button" class="toggle-btn" id="log"
+                                onclick="toggleAuthMode('login')">Login</button>
+                            <button type="button" class="toggle-btn" id="reg"
+                                onclick="toggleAuthMode('register')">Register</button>
+                        </div>
+                        <div id="login-form" class="input-group">
+                            <input type="email" id="login-email" class="input-field" placeholder="Email" required>
+                            <input type="password" id="login-password" class="input-field" placeholder="Password"
+                                required>
+                            <button type="submit" class="submit-btn" onclick="login(event)">Login</button>
+                            <p id="login-message" class="form-message"></p>
+                        </div>
+                        <div id="register-form" class="input-group">
+                            <input type="email" id="signup-email" class="input-field" placeholder="Email" required>
+                            <input type="password" id="signup-password" class="input-field" placeholder="Password"
+                                required>
+                            <button type="submit" class="submit-btn" onclick="signup(event)">Register</button>
+                            <p id="signup-message" class="form-message"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contact" class="section">
+            <div class="container">
+                <h3 class="section-title">Contact Us</h3>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> support@zynithsports.in</p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Address:</strong> 123 Sports Avenue, Sector 18, Noida, Uttar Pradesh 201301, India</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="back-to-top" class="btn-primary back-to-top" onclick="scrollToTop()">Back to Top</button>
+    <div id="loading-spinner" class="spinner" style="display: none;"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
